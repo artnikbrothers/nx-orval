@@ -1,5 +1,6 @@
 import { execSync } from 'child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync } from 'fs';
+import { tmpdir } from 'os';
 import { dirname, join } from 'path';
 
 // Nx version of the test workspace. CI sets it to cover the supported range.
@@ -216,7 +217,11 @@ describe('nx-orval', () => {
  */
 function createTestProject() {
   const projectName = 'test-project';
-  const projectDirectory = join(process.cwd(), 'tmp', projectName);
+  // Outside this repo, so Node never resolves packages from the plugin repo's node_modules.
+  const projectDirectory = join(
+    process.env['NX_ORVAL_E2E_DIR'] ?? join(tmpdir(), 'nx-orval-e2e'),
+    projectName,
+  );
 
   rmSync(projectDirectory, { recursive: true, force: true });
   mkdirSync(dirname(projectDirectory), { recursive: true });
