@@ -30,8 +30,15 @@ describe('nx-orval', () => {
     return env;
   };
 
-  const run = (command: string): string =>
-    execSync(command, { cwd: projectDirectory, encoding: 'utf-8', stdio: 'pipe', env: childEnv() });
+  /** Runs a command in the test workspace; a failure carries the command's output, which execSync leaves out. */
+  const run = (command: string): string => {
+    try {
+      return execSync(command, { cwd: projectDirectory, encoding: 'utf-8', stdio: 'pipe', env: childEnv() });
+    } catch (error) {
+      const { stdout = '', stderr = '' } = error as { stdout?: string; stderr?: string };
+      throw new Error(`${command} failed:\n${stdout}\n${stderr}`);
+    }
+  };
 
   const readText = (path: string): string => readFileSync(join(projectDirectory, path), 'utf-8');
 
