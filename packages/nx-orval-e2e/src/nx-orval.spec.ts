@@ -242,7 +242,9 @@ function createTestProject() {
     readFileSync(join(projectDirectory, 'node_modules/nx/package.json'), 'utf-8')
   ) as { version: string };
   if (installed !== NX_VERSION) {
-    execSync(`npm install -D nx@${NX_VERSION} @nx/js@${NX_VERSION}`, {
+    // Older Nx majors scaffold tsconfigs (moduleResolution node10) that TypeScript 6 rejects.
+    const typescript = Number(NX_VERSION.split('.')[0]) < 23 ? ' typescript@~5.9.0' : '';
+    execSync(`npm install -D nx@${NX_VERSION} @nx/js@${NX_VERSION}${typescript}`, {
       cwd: projectDirectory,
       stdio: 'inherit',
       env: process.env,
