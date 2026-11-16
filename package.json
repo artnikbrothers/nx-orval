@@ -5,8 +5,8 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@nx/devkit": "24.0.1",
-    "create-nx-workspace": "24.0.1"
+    "@nx/devkit": "24.0.6",
+    "create-nx-workspace": "24.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
@@ -30,7 +30,7 @@
     "jest-util": "~30.3.0",
     "jiti": "^2.7.0",
     "jsonc-eslint-parser": "^2.1.0",
-    "nx": "24.0.1",
+    "nx": "24.0.6",
     "orval": "^8.48.0",
     "ts-jest": "^29.4.7",
     "ts-node": "10.9.1",
