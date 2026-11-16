@@ -1,0 +1,36 @@
+name: Bug report
+description: Something in nx-orval does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Search the existing issues first, and keep the reproduction as small as you can.
+  - type: textarea
+    id: report
+    attributes:
+      label: Output of `nx report`
+      description: Run `npx nx report` in your workspace and paste the output. It lists the Nx, nx-orval, Orval, Node and package manager versions.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Orval config
+      description: The `orval.config.*` that triggers the problem, and the first lines of the OpenAPI spec if it matters. Remove anything private.
+      render: ts
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect, and what happened instead?
+      description: Include the command you ran and its output. `NX_VERBOSE_LOGGING=true` shows why a target is not cached.
+    validations:
+      required: true
+  - type: input
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Link to a repository or a minimal workspace that shows the problem, if you have one.

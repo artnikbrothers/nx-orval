@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "cli": "nx",
+  "title": "Orval generate executor",
+  "description": "Runs the Orval CLI for one config file.",
+  "type": "object",
+  "properties": {
+    "config": {
+      "type": "string",
+      "description": "Path to the Orval config, relative to the workspace root. Defaults to the orval.config.* file in the project root.",
+      "x-completion-type": "file",
+      "x-completion-glob": "orval.config.@(ts|mts|cts|js|mjs|cjs)"
+    },
+    "project": {
+      "type": "string",
+      "description": "Only generate this Orval project key from the config.",
+      "x-priority": "important"
+    },
+    "args": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Extra arguments passed to the Orval CLI.",
+      "default": []
+    }
+  },
+  "required": []
+}

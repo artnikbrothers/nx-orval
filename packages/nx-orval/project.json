@@ -1,0 +1,71 @@
+{
+  "name": "nx-orval",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/nx-orval/src",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "manifestRootsToUpdate": [
+        "dist/{projectRoot}"
+      ],
+      "currentVersionResolver": "git-tag",
+      "fallbackCurrentVersionResolver": "disk"
+    }
+  },
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "inputs": [
+        "production",
+        "^production",
+        "{workspaceRoot}/LICENSE"
+      ],
+      "options": {
+        "outputPath": "dist/packages/nx-orval",
+        "main": "packages/nx-orval/src/index.ts",
+        "tsConfig": "packages/nx-orval/tsconfig.lib.json",
+        "assets": [
+          {
+            "input": "./packages/nx-orval",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": ".",
+            "glob": "LICENSE",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-orval/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-orval/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-orval",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-orval",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "generators": {
+    "init": {
+      "factory": "./src/generators/init/generator",
+      "schema": "./src/generators/init/schema.json",
+      "x-type": "init",
+      "description": "Register nx-orval in nx.json and add Orval to the workspace. Projects with an orval.config.* file get a cached, inferred Orval target."
+    },
+    "api": {
+      "factory": "./src/generators/api/generator",
+      "schema": "./src/generators/api/schema.json",
+      "aliases": [
+        "client"
+      ],
+      "x-type": "library",
+      "description": "Add an Orval-generated API client library, or add Orval to an existing project."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "NxOrvalInit",
+  "cli": "nx",
+  "title": "Set up Orval in an Nx workspace",
+  "description": "Register the nx-orval plugin in nx.json and add Orval to the workspace. Every project with an orval.config.* file gets a cached, inferred Orval target. Safe to rerun, and what `nx add nx-orval` runs.",
+  "examples": [
+    {
+      "command": "nx g nx-orval:init",
+      "description": "Register the plugin and add orval to devDependencies"
+    },
+    {
+      "command": "nx g nx-orval:init --targetName=codegen",
+      "description": "Name the inferred target codegen instead of orval"
+    },
+    {
+      "command": "nx g nx-orval:init --skipPackageJson",
+      "description": "Only register the plugin, leave package.json untouched"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "targetName": {
+      "type": "string",
+      "description": "Name of the inferred Orval target. Ignored when nx.json already registers nx-orval; that entry is never changed.",
+      "default": "orval",
+      "x-priority": "important"
+    },
+    "skipPackageJson": {
+      "type": "boolean",
+      "description": "Do not add orval to package.json.",
+      "default": false
+    },
+    "keepExistingVersions": {
+      "type": "boolean",
+      "description": "Keep the version of orval the workspace already declares instead of raising it to the version nx-orval is tested with.",
+      "default": true,
+      "x-priority": "internal"
+    },
+    "skipFormat": {
+      "type": "boolean",
+      "description": "Skip formatting files.",
+      "default": false,
+      "x-priority": "internal"
+    }
+  },
+  "required": []
+}

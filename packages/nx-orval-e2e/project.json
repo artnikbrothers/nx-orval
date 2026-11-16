@@ -1,0 +1,19 @@
+{
+  "name": "nx-orval-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "packages/nx-orval-e2e/src",
+  "implicitDependencies": [
+    "nx-orval"
+  ],
+  "targets": {
+    "e2e": {
+      "dependsOn": [
+        "^build"
+      ],
+      "options": {
+        "runInBand": true
+      }
+    }
+  }
+}
