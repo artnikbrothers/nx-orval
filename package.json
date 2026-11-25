@@ -5,8 +5,8 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@nx/devkit": "24.0.1",
-    "create-nx-workspace": "24.0.1"
+    "@nx/devkit": "24.0.6",
+    "create-nx-workspace": "24.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
